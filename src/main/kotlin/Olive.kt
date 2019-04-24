@@ -6,6 +6,7 @@ import org.operndr.extras.filewatcher.watchFile
 import java.io.File
 
 fun main() = application {
+    System.setProperty("idea.io.use.fallback", "true")
     program {
         watchFile(File("src/main/kotlin/live.kts")) {
             extensions.clear()
