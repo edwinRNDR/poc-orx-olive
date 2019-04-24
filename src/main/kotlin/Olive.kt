@@ -7,11 +7,25 @@ import java.io.File
 
 fun main() = application {
     program {
-        val drawFunc = watchFile(File("src/main/kotlin/live.kts")) {
-            KtsObjectLoader().load<Program.()->Unit>(it.readText())
-        }
-        extend {
-            drawFunc()(this)
+        watchFile(File("src/main/kotlin/live.kts")) {
+            extensions.clear()
+            keyboard.keyDown.listeners.clear()
+            keyboard.keyUp.listeners.clear()
+            keyboard.character.listeners.clear()
+            keyboard.keyRepeat.listeners.clear()
+            mouse.clicked.listeners.clear()
+            mouse.buttonDown.listeners.clear()
+            mouse.dragged.listeners.clear()
+            mouse.buttonUp.listeners.clear()
+            mouse.moved.listeners.clear()
+            window.drop.listeners.clear()
+            window.focused.listeners.clear()
+            window.minimized.listeners.clear()
+            window.unfocused.listeners.clear()
+            window.restored.listeners.clear()
+            window.sized.listeners.clear()
+            val func = KtsObjectLoader().load<Program.() -> Unit>(it.readText())
+            func(this)
         }
     }
 }
