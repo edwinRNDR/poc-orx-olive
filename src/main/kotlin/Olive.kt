@@ -2,12 +2,16 @@ package olive
 
 import org.openrndr.Program
 import org.openrndr.application
+import org.openrndr.draw.Session
 import org.operndr.extras.filewatcher.watchFile
 import java.io.File
+
 
 fun main() = application {
     System.setProperty("idea.io.use.fallback", "true")
     program {
+
+        var session: Session? = null
         watchFile(File("src/main/kotlin/live.kts")) {
             extensions.clear()
             keyboard.keyDown.listeners.clear()
@@ -25,6 +29,10 @@ fun main() = application {
             window.unfocused.listeners.clear()
             window.restored.listeners.clear()
             window.sized.listeners.clear()
+            session?.end()
+
+            session = Session()
+            session?.start()
             val func = KtsObjectLoader().load<Program.() -> Unit>(it.readText())
             func(this)
         }

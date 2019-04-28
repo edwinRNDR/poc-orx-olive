@@ -9,8 +9,8 @@ group 'org.openrndr'
 version '1.0-SNAPSHOT'
 
 ext {
-    openrndrVersion = "0.3.33-rc2"
-    orxVersion = "0.0.23"
+    openrndrVersion = "0.3.33-rc3"
+    orxVersion = "0.0.24"
     kotlinVersion = "1.3.30"
 }
 repositories {
@@ -58,7 +58,11 @@ dependencies {
     compile "org.openrndr:openrndr-animatable:$openrndrVersion"
     compile "org.openrndr:openrndr-extensions:$openrndrVersion"
     compile "org.openrndr:openrndr-filter:$openrndrVersion"
-    compile 'com.github.openrndr.orx:orx-file-watcher:v0.0.23'
+    compile "com.github.openrndr.orx:orx-file-watcher:v$orxVersion"
+    compile "com.github.openrndr.orx:orx-noise:v$orxVersion"
+    compile "com.github.openrndr.orx:orx-compositor:v$orxVersion"
+    compile 'com.github.openrndr:openrndr-panel:v0.3.13'
+
 }
 
 ext.mainClassName = "olive.OliveKt"
