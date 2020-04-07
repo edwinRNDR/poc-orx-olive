@@ -1,3 +1,7 @@
+# Archived
+
+OLIVE is now part of the [ORX](https://github.com/openrndr/orx) repository, this repository is archived
+
 # OLIVE
 
 A simple live coding environment for OPENRNDR.
